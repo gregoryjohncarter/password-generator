@@ -1,15 +1,17 @@
 // Assignment code here
 
+
+//runs after clicking the button, includes empty pwArray at beginning
 const generatePassword = () => {
 
-  let pwArray = [''];
+  var pwArray = [];
 //ask what length they would like
 var pwLengthPrompt = window.prompt("What character length would you like for your password? Please enter a number at least 8 characters long and no longer than 128");
 
 
 //validate the length prompt or ask again
 if (pwLengthPrompt >= 8 && pwLengthPrompt < 129) {
-debugger;
+
   var pwLength = pwLengthPrompt;
   pwLength = parseInt(pwLength);
   
@@ -19,7 +21,7 @@ debugger;
   }
 
 
-  //prompt what type of password, lower, upper, etc.  function gets hoisted above if pwLengthPrompt is a num
+  //prompt what type of password, lower, upper, etc.  function gets hoisted above if pwLengthPrompt is valid
   function pwPushLength() {
 
     var pwTypePrompt = window.prompt("What type of password would you like to generate? Type 1 for lowercase, 2 for UPPERCASE, 3 for numeric, 4 for special characters, 5 for ALL.");
@@ -62,10 +64,10 @@ const randomCharacter5 = () => {
 }
 
     
-//push a random character from the chosen array--  'pwLength.length' amount of times
+//push a random character from the chosen array--  'pwLength' amount of times
     switch (pwTypePrompt) {
        case 1:
-        for (let i = 0; i < pwLength.length; i++) {
+        for (let i = 0; i < pwLength; i++) {
          
           pwArray.push(randomCharacter1());
       }
@@ -73,7 +75,7 @@ const randomCharacter5 = () => {
       break;
 
       case 2:
-        for (let i = pwLength.length - 1; i >= 0; i--) {
+        for (let i = 0; i < pwLength; i++) {
     
           pwArray.push(randomCharacter2());
       }
@@ -81,7 +83,7 @@ const randomCharacter5 = () => {
       break;
 
       case 3:
-        for (let i = pwLength.length - 1; i >= 0; i--) {
+        for (let i = 0; i < pwLength; i++) {
       
           pwArray.push(randomCharacter3());
       }
@@ -89,7 +91,7 @@ const randomCharacter5 = () => {
       break;
 
       case 4:
-        for (let i = pwLength.length - 1; i >= 0; i--) {
+        for (let i = 0; i < pwLength; i++) {
          
           pwArray.push(randomCharacter4());
       }
@@ -97,26 +99,30 @@ const randomCharacter5 = () => {
       break;
 
       case 5:
-        for (let i = pwLength.length - 1; i >= 0; i--) {
+        for (let i = 0; i < pwLength; i++) {
          
           pwArray.push(randomCharacter5());
       }
       
       break;
-
+// return the user to the prompt if they did not pick a valid option
       default:
         window.alert("You did not pick a valid option. Try again.");
         pwPushLength();
         break;
     }
 
-    return pwArray;
-
   }
+  //return the joined array back to this variable
+  return pwArray.join('');
 }
+
+  
+
 
 
 // Get references to the #generate element
+
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
@@ -130,11 +136,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
-/* 
-
-var p = document.create element h1, p textcontent = , document . body.appendchild (p)
-
-*/
