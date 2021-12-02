@@ -24,7 +24,7 @@ if (pwLengthPrompt >= 8 && pwLengthPrompt < 129) {
   //prompt what type of password, lower, upper, etc.  function gets hoisted above if pwLengthPrompt is valid
   function pwPushLength() {
 
-    var pwTypePrompt = window.prompt("What type of password would you like to generate? Type 1 for lowercase, 2 for UPPERCASE, 3 for numeric, 4 for special characters, 5 for ALL.");
+    var pwTypePrompt = window.prompt("What type of password would you like to generate? Type 1 for lowercase, 2 for uppercase, 3 for numeric, 4 for special characters, 5 for all");
       
     pwTypePrompt = parseInt(pwTypePrompt);
 
